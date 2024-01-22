@@ -91,6 +91,15 @@ int main() {
   // std::cout << markov_chain<6>( B, u0, 1e-5, 1000 )
   //           << std::endl;
 
+  matrix<6, 6> Q5{
+    {4.9602e-02, 3.9491e-01, 8.0424e-01, 4.3817e-02, 1.3315e-01, 7.6256e-01},
+    {9.8110e-01, 3.2924e-01, 9.5337e-01, 5.1886e-01, 6.0196e-01, 9.1649e-01},
+    {6.6801e-01, 7.2262e-01, 6.1835e-01, 4.2310e-01, 1.2395e-01, 5.8291e-01},
+    {8.7204e-01, 9.1476e-01, 1.7868e-01, 9.6011e-01, 4.2699e-01, 7.7038e-01},
+    {7.4930e-01, 1.2133e-01, 8.5209e-01, 5.7775e-01, 9.3918e-01, 7.8593e-01},
+    {2.3446e-03, 1.6840e-01, 6.4882e-01, 4.6606e-01, 9.4814e-01, 2.1560e-01}
+  };
+
   return 0;
 }
 
@@ -111,6 +120,22 @@ vec<n> markov_chain(
   //  - All entries are non-negative
   //  - All of the rows add up to '1.0' with an
   //    allowed error of eps_step
+
+    //check if all values are positive
+    for(unsigned int i{1}; i <= max_iterations; ++i){ //column entries
+        for(unsigned int k{1}; k <= max_iterations; ++k){ //row entries
+            double entry = A(i, j)
+
+            if(entry <= 0){
+                //exception error
+            }
+        }
+    }
+
+    //check if stochastic 
+    for(unsigned int j{1}; j <= max_iterations; ++j){
+        
+    }
 
   // Iterate as necessary
   return vec<n>{};

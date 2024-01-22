@@ -121,21 +121,26 @@ vec<n> markov_chain(
   //  - All of the rows add up to '1.0' with an
   //    allowed error of eps_step
 
-    //check if all values are positive
-    for(unsigned int i{1}; i <= max_iterations; ++i){ //column entries
-        for(unsigned int k{1}; k <= max_iterations; ++k){ //row entries
-            double entry = A(i, j)
+    //check if stochastic matrix
+    for(int k = 1; k <= n; ++k){ //loop through columns
+      double sum = 0.0; //create variable to store sums of columns
 
-            if(entry <= 0){
-                //exception error
-            }
+      for(int j = 1; j <= n; ++j){ //loop through rows
+
+        if(A(j, k) < 0){ //check if entry is negative
+          throw std::invalid_argument("There is a negative number.")
         }
+
+        sum += A(j, k)
+
+      }
+
+      if(std::abs(1.0 - sum) > n * eps_steps){ //check if column doesn't equal to 1
+        throw std::invalid_argument("A column does not equal to 1.")
+      }
     }
 
-    //check if stochastic 
-    for(unsigned int j{1}; j <= max_iterations; ++j){
-        
-    }
+    
 
   // Iterate as necessary
   return vec<n>{};
